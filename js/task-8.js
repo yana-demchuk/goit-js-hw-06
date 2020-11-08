@@ -1,12 +1,11 @@
-// Задача 6-3
-// filter, map
-// Получи массив имен пользователей (значение свойства name) по полу (значение свойства gender).
+// Задача 6-8
+// filter, includes и map
+// Получи массив имен всех пользователей у которых есть друг с заданным именем.
 
-// Используй деструктурирующее присваивание для параметра функции ({name}) без пробелов и переносов на новую строку.
+// Используй деструктурирующее присваивание для параметра функции {friends}и ({name}) без пробелов и переносов на новую строку
 
-// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. Т.е. нельзя использовать for, splice, push и т.п. мутирующие методы.
-
-// Массив обьектов пользователей
+// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. 
+// Т.е.нельзя использовать for, splice, push и т.п.мутирующие методы.
 
 const users =  [
   {
@@ -96,19 +95,16 @@ const users =  [
 ];
 
 // Write code under this line
-const object = { gender: 'male' };
 
-function genderUsers({name}) {
-  return name;
-};
+function filterFriends({ name }, { friends }) { return name, friends }
 
-const getUsersWithGender = (users, gender) => users.filter(users => users.gender === gender).map(elem => elem.name)
+const getUsersWithFriend = (array, friendName) => array.filter(({ friends }) => friends.includes(friendName)).map(({ name }) => name)
 
-console.log(getUsersWithGender(users, 'male'));
 
-/* [
-  "Moore Hensley",
-  "Ross Vazquez",  
-  "Carey Barr",  
-  "Blackburn Dotson"  
-] */
+
+console.log(getUsersWithFriend(users, 'Briana Decker'));
+// [ 'Sharlene Bush', 'Sheree Anthony' ]
+
+console.log(getUsersWithFriend(users, 'Goldie Gentry'));
+// [ 'Elma Head', 'Sheree Anthony' ]
+

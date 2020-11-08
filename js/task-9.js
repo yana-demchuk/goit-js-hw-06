@@ -1,12 +1,26 @@
-// Задача 6-3
-// filter, map
-// Получи массив имен пользователей (значение свойства name) по полу (значение свойства gender).
+// Задача 6-9
+// sort и map
+// Получи массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
 
-// Используй деструктурирующее присваивание для параметра функции ({name}) без пробелов и переносов на новую строку.
+// Избегаем мутации исходного массива: т.к. метод sort изменяет (мутирует) исходный массив, то следует сделать копию массива 
+// и сортировать уже копию, а не исходный массив.
 
-// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. Т.е. нельзя использовать for, splice, push и т.п. мутирующие методы.
+// Копирование массива:
 
-// Массив обьектов пользователей
+// const arr = [1, 3, 5];
+
+// // 1
+// const first = [...arr];
+
+// // 2
+// const second = arr.slice();
+
+// // 3
+// const third = arr.concat();
+// Используй деструктурирующее присваивание для параметра функции ({name})` без пробелов и переносов на новую строку
+
+// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. 
+// Т.е.нельзя использовать for, splice, push и т.п.мутирующие методы.
 
 const users =  [
   {
@@ -96,19 +110,10 @@ const users =  [
 ];
 
 // Write code under this line
-const object = { gender: 'male' };
+// function sortName({name}) { return name }
 
-function genderUsers({name}) {
-  return name;
-};
 
-const getUsersWithGender = (users, gender) => users.filter(users => users.gender === gender).map(elem => elem.name)
+const getNamesSortedByFriendsCount = (array) => [...array].sort((a, b) => a.friends.length - b.friends.length).map(({ name }) => name);
 
-console.log(getUsersWithGender(users, 'male'));
-
-/* [
-  "Moore Hensley",
-  "Ross Vazquez",  
-  "Carey Barr",  
-  "Blackburn Dotson"  
-] */
+console.log(getNamesSortedByFriendsCount(users));
+// [ 'Moore Hensley', 'Sharlene Bush', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony', 'Ross Vazquez' ]

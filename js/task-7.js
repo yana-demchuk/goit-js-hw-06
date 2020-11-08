@@ -1,12 +1,11 @@
-// Задача 6-3
-// filter, map
-// Получи массив имен пользователей (значение свойства name) по полу (значение свойства gender).
+// Задача 6-7
+// reduce
+// Получи общую сумму баланса (сумму значений свойства balance) всех пользователей.
 
-// Используй деструктурирующее присваивание для параметра функции ({name}) без пробелов и переносов на новую строку.
+// Используй деструктурирующее присваивание для параметра функции {balance} без пробелов и переносов на новую строку
 
-// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. Т.е. нельзя использовать for, splice, push и т.п. мутирующие методы.
-
-// Массив обьектов пользователей
+// Используй только перебирающие методы массива которые не изменяют (не мутируют) исходный массив. 
+// Т.е.нельзя использовать for, splice, push и т.п.мутирующие методы.
 
 const users =  [
   {
@@ -96,19 +95,10 @@ const users =  [
 ];
 
 // Write code under this line
-const object = { gender: 'male' };
 
-function genderUsers({name}) {
-  return name;
-};
+function calcBalance({balance}) { return balance; }
+const calculateTotalBalance = array => array.reduce((totalBalance, array) => totalBalance + array.balance, 0);
 
-const getUsersWithGender = (users, gender) => users.filter(users => users.gender === gender).map(elem => elem.name)
+console.log(calculateTotalBalance(users)); 
+// 20916
 
-console.log(getUsersWithGender(users, 'male'));
-
-/* [
-  "Moore Hensley",
-  "Ross Vazquez",  
-  "Carey Barr",  
-  "Blackburn Dotson"  
-] */
